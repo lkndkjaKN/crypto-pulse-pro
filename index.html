@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Professional cryptocurrency analysis tool powered by AI with real-time market data">
+    <meta name="keywords" content="crypto, cryptocurrency, analysis, trading, AI, Bitcoin, Ethereum">
+    <meta name="author" content="CryptoPulse Pro Team">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Primary Meta Tags -->
+    <meta property="og:title" content="CryptoPulse Pro - AI Crypto Analysis">
+    <meta property="og:description" content="Advanced cryptocurrency market analysis powered by artificial intelligence">
+    <meta property="og:type" content="website">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.cryptopulsepro.com">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" media="all">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    
+    <title>CryptoPulse Pro - AI Crypto Analysis</title>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CryptoPulse Pro",
+      "description": "Professional cryptocurrency analysis tool powered by AI",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web"
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="logo-container">
+                <i class="fas fa-chart-line logo-icon" aria-hidden="true"></i>
+                <h1>CryptoPulse Pro</h1>
+                <span class="beta-badge">BETA</span>
+            </div>
+            <nav class="header-nav">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <span class="sr-only">Toggle dark/light mode</span>
+                </button>
+            </nav>
+        </header>
+        
+        <main class="app-main">
+            <section class="search-section">
+                <div class="search-box">
+                    <label for="cryptoSearch" class="sr-only">Search cryptocurrencies</label>
+                    <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                    <input type="text" 
+                           id="cryptoSearch" 
+                           placeholder="BTC, ETH, SOL..." 
+                           autocomplete="off" 
+                           aria-label="Search cryptocurrencies"
+                           inputmode="search"
+                           enterkeyhint="search">
+                    <button id="analyzeBtn" class="primary-button" aria-label="Analyze cryptocurrency">
+                        <span class="button-text">Analyze</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+                
+                <div id="searchSuggestions" class="search-suggestions" hidden></div>
+            </section>
+            
+            <section id="historyContainer" class="history-container" aria-live="polite"></section>
+            
+            <section id="loadingIndicator" class="loading-indicator" hidden>
+                <div class="spinner" aria-hidden="true"></div>
+                <p class="loading-text">Analyzing market data...</p>
+                <progress class="loading-progress" max="100" value="0"></progress>
+            </section>
+            
+            <section id="resultsArea" class="results-area" hidden aria-live="polite"></section>
+            
+            <aside class="news-ticker" aria-live="polite">
+                <div class="ticker-content"></div>
+            </aside>
+        </main>
+        
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p class="copyright">&copy; <span id="currentYear"></span> CryptoPulse Pro. All rights reserved.</p>
+                <nav class="footer-nav">
+                    <a href="/privacy" class="footer-link">Privacy Policy</a>
+                    <a href="/terms" class="footer-link">Terms of Service</a>
+                    <a href="mailto:support@cryptopulsepro.com" class="footer-link">Contact Support</a>
+                </nav>
+            </div>
+            <div class="build-info">
+                <span class="version">v2.1.0</span>
+                <span class="build-date" id="buildDate"></span>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Loading polyfills for older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.includes%2CIntersectionObserver%2CPromise%2Cfetch%2CURL%2CObject.entries%2CObject.values"></script>
+    
+    <!-- Main application script (deferred) -->
+    <script src="script.js" defer></script>
+    
+    <!-- Performance monitoring -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js');
+        });
+    }
+    </script>
+</body>
+</html>

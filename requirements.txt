@@ -5,3 +5,4 @@ python-dotenv==1.0.1
 praw==7.7.1
 python-binance==1.0.24
 cachetools==5.3.2
+openai==1.12.0
